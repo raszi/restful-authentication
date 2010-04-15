@@ -14,7 +14,7 @@ describe <%= model_controller_class_name %>Controller do
     end.should change(<%= class_name %>, :count).by(1)
   end
 
-  <% if options[:stateful] %>
+  <% if options.stateful? %>
   it 'signs up user in pending state' do
     create_<%= file_name %>
     assigns(:<%= file_name %>).reload
@@ -60,7 +60,7 @@ describe <%= model_controller_class_name %>Controller do
     end.should_not change(<%= class_name %>, :count)
   end
   
-  <% if options[:include_activation] %>
+  <% if options.include_activation? %>
   it 'activates user' do
     <%= class_name %>.authenticate('aaron', 'monkey').should be_nil
     get :activate, :activation_code => <%= table_name %>(:aaron).activation_code
