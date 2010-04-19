@@ -144,6 +144,8 @@ class AuthenticatedGenerator <  Rails::Generators::NamedBase
       puts ("-" * 70)
       puts "Once finished, don't forget to:"
       puts
+      puts "- Install the dynamic_form plugin(error_messages_for was removed from Rails and is now available as a plugin):"
+      puts "    Install it with rails plugin install git://github.com/rails/dynamic_form.git"
       if options.include_activation?
         puts "- Add an observer to config/environment.rb"
         puts "    config.active_record.observers = :#{ file_name }_observer"
@@ -157,9 +159,9 @@ class AuthenticatedGenerator <  Rails::Generators::NamedBase
         puts "    svn export http://elitists.textdriven.com/svn/plugins/acts_as_state_machine/trunk vendor/plugins/acts_as_state_machine"
       end
       puts "- Add routes to these resources. In config/routes.rb, insert routes like:"
-      puts %(    match 'login' => '#{ controller_file_name }#new', :as => :login")
-      puts %(    match 'logout' => '#{ controller_file_name }#destroy', :as => :logout")
-      puts %(    match 'signup' => '#{ model_controller_file_name }#new', :as => :signup")
+      puts %(    match 'login' => '#{ controller_file_name }#new', :as => :login)
+      puts %(    match 'logout' => '#{ controller_file_name }#destroy', :as => :logout)
+      puts %(    match 'signup' => '#{ model_controller_file_name }#new', :as => :signup)
       if options.include_activation?
         puts %(    match 'activate/:activation_code' => '#{ model_controller_file_name }#activate', :as => :activate, :activation_code => nil)
       end
